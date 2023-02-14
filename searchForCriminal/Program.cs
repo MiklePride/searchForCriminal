@@ -9,7 +9,6 @@ namespace searchForCriminal
         static void Main(string[] args)
         {
             DataBaseCriminal dataBaseCriminal = new DataBaseCriminal();
-
             dataBaseCriminal.Start();
         }
     }
@@ -64,7 +63,7 @@ class DataBaseCriminal
 
         Console.Clear();
 
-        var filteredCriminals = _criminals.Where(criminal => criminal.Growth == growth && criminal.Weight == weight && criminal.Nationality.ToLower() == nationality.ToLower() && criminal._isHeInCustody == false);
+        var filteredCriminals = _criminals.Where(criminal => criminal.Growth == growth && criminal.Weight == weight && criminal.Nationality.ToLower() == nationality.ToLower() && criminal._isAPrisoner == false);
 
         if (filteredCriminals.Count() == 0)
         {
@@ -85,15 +84,15 @@ class Criminal
     private string _fullName;
     private string _status;
 
-    public Criminal(string fullName, string nationality, int growth, int weight, bool isInCustody)
+    public Criminal(string fullName, string nationality, int growth, int weight, bool isAPrisoner)
     {
         _fullName = fullName;
         Nationality = nationality;
         Growth = growth;
         Weight = weight;
-        _isHeInCustody = isInCustody;
+        _isAPrisoner = isAPrisoner;
 
-        if (_isHeInCustody)
+        if (_isAPrisoner)
         {
             _status = "Заключенный";
         }
@@ -104,12 +103,9 @@ class Criminal
     }
 
     public string Nationality { get; private set; }
-
     public int Growth { get; private set; }
-
     public int Weight { get; private set; }
-
-    public bool _isHeInCustody { get; private set; }
+    public bool _isAPrisoner { get; private set; }
 
     public void ShowInfo()
     {
