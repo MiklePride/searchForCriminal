@@ -39,9 +39,7 @@ class DataBaseCriminal
         while (isWork)
         {
             Console.Clear();
-
             SearchCriminals();
-
             Console.WriteLine($"Нажмите чтобы - продолжить / Выйти: любая клавиша / {commandKeyExit}");
 
             userInput = Console.ReadKey().Key;
@@ -56,20 +54,17 @@ class DataBaseCriminal
     private void SearchCriminals()
     {
         Console.Write("Введите рост: ");
-
         int growth = UserUtils.GetNumber();
 
         Console.Write("\nВведите вес: ");
-
         int weight = UserUtils.GetNumber();
 
         Console.Write("\nВведите национальность: ");
-
         string nationality = Console.ReadLine();
 
         Console.Clear();
 
-        var filteredCriminals = _criminals.Where(criminal => criminal.Growth == growth && criminal.Weight == weight && criminal.Nationality.ToLower() == nationality.ToLower() && criminal._isInCustody == false);
+        var filteredCriminals = _criminals.Where(criminal => criminal.Growth == growth && criminal.Weight == weight && criminal.Nationality.ToLower() == nationality.ToLower() && criminal._isHeInCustody == false);
 
         if (filteredCriminals.Count() == 0)
         {
@@ -96,9 +91,9 @@ class Criminal
         Nationality = nationality;
         Growth = growth;
         Weight = weight;
-        _isInCustody = isInCustody;
+        _isHeInCustody = isInCustody;
 
-        if (_isInCustody)
+        if (_isHeInCustody)
         {
             _status = "Заключенный";
         }
@@ -114,7 +109,7 @@ class Criminal
 
     public int Weight { get; private set; }
 
-    public bool _isInCustody { get; private set; }
+    public bool _isHeInCustody { get; private set; }
 
     public void ShowInfo()
     {
