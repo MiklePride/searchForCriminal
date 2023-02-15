@@ -63,7 +63,7 @@ class DataBaseCriminal
 
         Console.Clear();
 
-        var filteredCriminals = _criminals.Where(criminal => criminal.Growth == growth && criminal.Weight == weight && criminal.Nationality.ToLower() == nationality.ToLower() && criminal._isAPrisoner == false);
+        var filteredCriminals = _criminals.Where(criminal => criminal.Growth == growth && criminal.Weight == weight && criminal.Nationality.ToLower() == nationality.ToLower() && criminal.IsAPrisoner == false);
 
         if (filteredCriminals.Count() == 0)
         {
@@ -90,9 +90,9 @@ class Criminal
         Nationality = nationality;
         Growth = growth;
         Weight = weight;
-        _isAPrisoner = isAPrisoner;
+        IsAPrisoner = isAPrisoner;
 
-        if (_isAPrisoner)
+        if (IsAPrisoner)
         {
             _status = "Заключенный";
         }
@@ -105,7 +105,7 @@ class Criminal
     public string Nationality { get; private set; }
     public int Growth { get; private set; }
     public int Weight { get; private set; }
-    public bool _isAPrisoner { get; private set; }
+    public bool IsAPrisoner { get; private set; }
 
     public void ShowInfo()
     {
